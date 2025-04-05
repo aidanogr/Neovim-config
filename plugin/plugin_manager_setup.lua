@@ -12,6 +12,20 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+{
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter.configs').setup {
+       -- A list of parser names, or "all" (the five listed parsers should always be installed)
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+      -- enable syntax highlighting
+      highlight = {
+	  enable = true
+      }     -- your config here
+    }
+  end
+},
   "nvim-lualine/lualine.nvim",
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   "williamboman/mason.nvim",
